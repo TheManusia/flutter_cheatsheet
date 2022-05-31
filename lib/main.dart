@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cheatsheet/inline_audio_player/inline_audio_player.dart';
 
 import 'audio_recorder/audio_recorder.dart';
 
@@ -31,6 +32,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final String _audioUrl =
+      'https://cdn.discordapp.com/attachments/475120233779298305/981272851002830898/DJ_Genki_-_HYPER_GENERATOR.mp3';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,7 +62,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text('Audio Recorder'),
               ),
-            )
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => InlineAudioPlayer(url: _audioUrl),
+                    ),
+                  );
+                },
+                child: const Text('Inline Audio Player'),
+              ),
+            ),
           ],
         ),
       ),
